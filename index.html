@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stackers - Autoavaliação</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>The Stackers</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Autoavaliação</a></li>
+                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">Metas</a></li>
+                    <li><a href="#">Relatórios</a></li>
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="welcome" class="container">
+            <h2>Bem-vindo, [Nome do Funcionário]</h2>
+            <p>Essa é a sua plataforma para autoavaliação, recebimento de reviews e definição de metas.</p>
+        </section>
+        <section id="dashboard" class="container">
+            <h2>Painel de Controle</h2>
+            <div class="cards-container">
+                <div class="card" onclick="startSelfEvaluation()">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h3>Autoavaliação</h3>
+                    <p>Complete sua autoavaliação periódica.</p>
+                </div>
+                <div class="card" onclick="viewReviews()">
+                    <i class="fas fa-comments"></i>
+                    <h3>Reviews</h3>
+                    <p>Veja os reviews de seus colegas e gestores.</p>
+                </div>
+                <div class="card" onclick="manageGoals()">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Metas</h3>
+                    <p>Defina e acompanhe suas metas.</p>
+                </div>
+                <div class="card" onclick="viewReports()">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Relatórios</h3>
+                    <p>Veja seus relatórios de desempenho.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Stackers. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
