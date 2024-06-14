@@ -1,6 +1,8 @@
 function startSelfEvaluation() {
     // Implementar lógica para iniciar autoavaliação
     alert('Iniciando Autoavaliação...');
+    window.location.href = 'autoavaliacao.html';
+    
 }
 
 function viewReviews() {
