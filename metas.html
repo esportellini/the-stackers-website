@@ -1,0 +1,53 @@
+<!-- metas.html Atualizado -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas - The Stackers</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Ícones do Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>The Stackers</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="perfil.html"><i class="fas fa-user"></i> Perfil</a></li>
+                    <li><a href="#" onclick="logout()"><i class="fas fa-door-open"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="goals" class="container">
+            <h2>Metas</h2>
+            <div id="goalsList">
+                <!-- Metas serão carregadas aqui -->
+            </div>
+            <form id="goalForm">
+                <h3>Adicionar Nova Meta</h3>
+                <div class="form-group">
+                    <label for="goalTitle">Título:</label>
+                    <input type="text" id="goalTitle" name="goalTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="goalDescription">Descrição:</label>
+                    <textarea id="goalDescription" name="goalDescription" rows="3" required></textarea>
+                </div>
+                <button type="submit">Adicionar Meta</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Stackers. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="script-metas.js"></script>
+</body>
+</html>

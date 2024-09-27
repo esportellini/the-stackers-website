@@ -1,3 +1,11 @@
+// script-avaliacao.js
+
+// Verifica se o usuário está logado
+const isLoggedIn = localStorage.getItem('isLoggedIn');
+if (!isLoggedIn || isLoggedIn !== 'true') {
+    window.location.href = 'login.html';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const ratings = document.querySelectorAll('.rating');
     
@@ -18,6 +26,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             });
+
+            // Efeito hover para seleção
+            star.addEventListener('mouseover', function() {
+                const value = this.getAttribute('data-value');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= value) {
+                        s.classList.add('hover');
+                    } else {
+                        s.classList.remove('hover');
+                    }
+                });
+            });
+
+            star.addEventListener('mouseout', function() {
+                stars.forEach(s => {
+                    s.classList.remove('hover');
+                });
+            });
         });
     });
     
@@ -29,9 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         questions.forEach(q => {
             const rating = document.querySelector(`input[name="${q}"]`);
-            formData[q] = rating ? rating.value : 0;
+            formData[q] = rating ? parseInt(rating.value) : 0;
         });
-        
+
+        // Adiciona a data da avaliação
+        formData.date = new Date().toISOString();
+
         let assessments = JSON.parse(localStorage.getItem('assessments')) || [];
         assessments.push(formData);
         localStorage.setItem('assessments', JSON.stringify(assessments));
@@ -39,9 +68,20 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadJSON(formData, 'autoavaliacao.json');
         
         alert('Autoavaliação enviada com sucesso!');
+        this.reset();
+
+        // Remove as classes 'selected' dos stars após o reset
+        ratings.forEach(rating => {
+            const stars = rating.querySelectorAll('.fa-star');
+            stars.forEach(star => {
+                star.classList.remove('selected');
+            });
+            const input = rating.querySelector('input');
+            input.value = 0;
+        });
     });
 
-    // Carregar relatórios
+    // Carregar relatórios (se houver um elemento com id 'reportList')
     if (document.getElementById('reportList')) {
         const reportList = document.getElementById('reportList');
         let assessments = JSON.parse(localStorage.getItem('assessments')) || [];
@@ -67,7 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 const paragraph = document.createElement('p');
                 paragraph.innerHTML = `<strong>${questionsText[i]}:</strong> <span class="star-rating">${'★'.repeat(assessment[q])}${'☆'.repeat(5 - assessment[q])}</span>`;
                 report.appendChild(paragraph);
-            });
+            }
+
+            );
+
+            // Adiciona a data da avaliação
+            const dateParagraph = document.createElement('p');
+            const date = new Date(assessment.date);
+            dateParagraph.innerHTML = `<em>Data da Avaliação:</em> ${date.toLocaleString()}`;
+            report.appendChild(dateParagraph);
             
             reportList.appendChild(report);
         });
