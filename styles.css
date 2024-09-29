@@ -6,22 +6,23 @@
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: 'Roboto', Arial, sans-serif; /* Alterado para uma fonte mais moderna */
+    background-color: #e9ecef; /* Cor de fundo mais suave */
+    color: #343a40; /* Cor de texto mais escura */
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1em 0;
+    padding: 2em 0; /* Espaçamento superior e inferior aumentado */
 }
 
 header {
-    background-color: #0073e6;
+    background-color: #0056b3; /* Azul mais escuro para um visual mais profissional */
     color: white;
-    padding: 1em 0;
+    padding: 1.5em 0; /* Aumentado para mais espaço */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil para o cabeçalho */
 }
 
 header .container {
@@ -31,13 +32,14 @@ header .container {
 }
 
 header h1 {
-    font-size: 1.5em;
+    font-size: 2em; /* Tamanho da fonte aumentado */
+    letter-spacing: 1px; /* Aumento do espaçamento entre letras */
 }
 
 nav ul {
     list-style-type: none;
     display: flex;
-    gap: 1em;
+    gap: 2em; /* Aumentar o espaçamento entre os links */
 }
 
 nav ul li {
@@ -47,48 +49,54 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 500; /* Peso de fonte ligeiramente reduzido */
+    transition: color 0.3s ease; /* Adicionar transição suave */
+}
+
+nav ul li a:hover {
+    color: #ffdd57; /* Alterar cor ao passar o mouse */
 }
 
 main {
-    padding: 2em 0;
+    padding: 3em 0; /* Aumentar o espaçamento superior e inferior */
 }
 
 section#dashboard {
-    display: block; /* Definindo como bloco */
-    padding: 2em 0;
+    display: block;
+    padding: 3em 0; /* Aumentar o espaçamento */
 }
 
 .cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5em;
+    gap: 2em; /* Aumentar o espaçamento entre os cartões */
     justify-content: center;
-    margin-top: 1.5em; /* Adiciona espaço entre o título e os cartões */
+    margin-top: 2em; /* Aumentar o espaço entre o título e os cartões */
 }
 
 .card {
-    background-color: white;
+    background-color: #ffffff; /* Manter branco, mas adicionar borda */
+    border: 1px solid #dee2e6; /* Borda suave para os cartões */
     padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Arredondamento maior */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
     flex: 1 1 calc(25% - 2em);
     box-sizing: border-box;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    max-width: 300px; /* Limitar a largura máxima dos cartões */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); /* Sombra mais forte ao passar o mouse */
 }
 
 .card i {
-    font-size: 2em;
+    font-size: 2.5em; /* Ícone maior */
     margin-bottom: 0.5em;
-    color: #0073e6;
+    color: #0056b3; /* Cor do ícone mais escura */
 }
 
 .card h3 {
@@ -96,35 +104,64 @@ section#dashboard {
 }
 
 button {
-    background-color: #0073e6;
+    background-color: #0056b3; /* Manter a cor do botão consistente */
     color: white;
     border: none;
-    padding: 0.5em 1em;
+    padding: 0.7em 1.5em;
     cursor: pointer;
     border-radius: 4px;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adicionar transição ao botão */
 }
 
 button:hover {
-    background-color: #005bb5;
+    background-color: #004494; /* Azul mais escuro ao passar o mouse */
+    transform: translateY(-2px);
 }
 
 footer {
     text-align: center;
-    padding: 1em 0;
-    background-color: #0073e6;
+    padding: 1.5em 0; /* Aumentar espaçamento */
+    background-color: #0056b3; /* Cor de fundo mais escura */
     color: white;
 }
 
-/* Estilos existentes... */
+/* Estilos para formulários */
+form {
+    background-color: #ffffff;
+    padding: 2em; /* Aumentar espaçamento interno */
+    border-radius: 12px; /* Arredondamento maior */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 2em; /* Aumentar espaçamento superior */
+}
+
+form h3 {
+    margin-bottom: 1em;
+    color: #0056b3; /* Cor do título mais escura */
+}
 
 .form-group {
     margin-bottom: 1.5em;
 }
 
-label {
+.form-group label {
     display: block;
     margin-bottom: 0.5em;
     font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75em; /* Aumentar padding */
+    border: 1px solid #ced4da; /* Cor de borda mais suave */
+    border-radius: 4px;
+    transition: border-color 0.3s ease; /* Transição suave para borda */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #0056b3; /* Cor de borda ao focar */
 }
 
 .rating {
@@ -144,192 +181,14 @@ label {
     color: #ffdd57;
 }
 
-/* ... Código existente ... */
-
-/* Estilos para formulários */
-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1.5em;
-}
-
-form h3 {
-    margin-bottom: 1em;
-    color: #0073e6;
-}
-
-.form-group {
-    margin-bottom: 1em;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #0073e6;
-    color: white;
-    border: none;
-    padding: 0.7em 1.5em;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-button:hover {
-    background-color: #005bb5;
-}
-
 /* Estilos para listas de reviews, metas e relatórios */
 .review,
 .goal,
 .report {
     background-color: #fff;
-    padding: 1em;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1em;
-}
-
-.review h4,
-.goal h4,
-.report h3 {
-    margin-bottom: 0.5em;
-    color: #0073e6;
-}
-
-.star-rating {
-    color: #ffdd57;
-    font-size: 1.2em;
-}
-
-/* Responsividade para formulários e listas */
-@media (max-width: 768px) {
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    form, .review, .goal, .report {
-        width: 100%;
-    }
-}
-
-/* ... Código existente ... */
-
-/* Estilos para relatórios */
-.report {
-    background-color: #fff;
     padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5em;
-}
-
-.report h3 {
-    margin-bottom: 1em;
-    color: #0073e6;
-}
-
-.star-rating {
-    color: #ffdd57;
-    font-size: 1.2em;
-}
-
-@media (max-width: 768px) {
-    /* Ajustes para dispositivos móveis */
-    .report {
-        padding: 1em;
-    }
-}
-
-/* styles.css */
-
-/* ... Código existente ... */
-
-/* Estilos para formulários */
-form {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: 1.5em;
-}
-
-form h3,
-form h2 {
-    margin-bottom: 1em;
-    color: #0073e6;
-}
-
-.form-group {
-    margin-bottom: 1em;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5em;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.5em;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #0073e6;
-    color: white;
-    border: none;
-    padding: 0.7em 1.5em;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-button:hover {
-    background-color: #005bb5;
-}
-
-/* Estilos específicos para a página de login */
-#login {
-    max-width: 400px;
-    margin: 2em auto;
-}
-
-#login h2 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-/* Estilos para relatórios, metas e reviews */
-.review,
-.goal,
-.report {
-    background-color: #fff;
-    padding: 1.5em;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Arredondamento maior */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
     margin-bottom: 1.5em;
 }
 
@@ -337,7 +196,7 @@ button:hover {
 .goal h4,
 .report h3 {
     margin-bottom: 0.5em;
-    color: #0073e6;
+    color: #0056b3; /* Cor do título mais escura */
 }
 
 .star-rating {
@@ -366,3 +225,96 @@ button:hover {
         width: 90%;
     }
 }
+
+/* Estilos específicos para a página de login */
+#login {
+    max-width: 400px;
+    margin: 2em auto;
+}
+
+#login h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #0056b3; /* Cor do título mais escura */
+}
+
+/* Adicionando transições de animação */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #004494; /* Azul mais escuro ao passar o mouse */
+    transform: translateY(-2px);
+}
+
+#statistics, #feedback, #notifications {
+    margin: 2em 0;
+    padding: 2em;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.stat {
+    flex: 1;
+    text-align: center;
+    padding: 1em;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.feedback-container {
+    margin-top: 1em;
+}
+
+.feedback {
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 8px;
+    margin-bottom: 1em;
+}
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Garante que a notificação fique acima de outros elementos */
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    width: 250px; /* Largura fixa para o contêiner */
+}
+
+.notification-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.notification-list li {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    border-radius: 4px;
+}
+

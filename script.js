@@ -53,4 +53,47 @@ document.addEventListener('DOMContentLoaded', function() {
         const welcomeMessage = welcomeSection.querySelector('h2');
         welcomeMessage.textContent = `Bem-vindo, ${currentUser.name}`;
     }
+
+    // Chama a função de verificação de metas ao carregar a página
+    checkGoals();
 });
+
+// Função para verificar metas não cumpridas e exibir notificações
+function checkGoals() {
+    const notificationList = document.getElementById('notificationList');
+    const notificationCount = document.getElementById('notificationCount');
+
+    // Limpa as notificações anteriores
+    notificationList.innerHTML = '';
+    let count = 0; // Para contar as notificações
+
+    // Supondo que você tenha um array de metas armazenado em algum lugar
+    const goals = JSON.parse(localStorage.getItem('goals')) || []; // Exemplo de carregamento das metas
+
+    // Verifica metas não cumpridas
+    goals.forEach(goal => {
+        if (!goal.completed) {
+            count++;
+            const li = document.createElement('li');
+            li.textContent = `Atenção: ${goal.name} não foi cumprida.`;
+            notificationList.appendChild(li);
+        }
+    });
+
+    // Atualiza a contagem de notificações
+    notificationCount.textContent = count;
+
+    // Se não houver notificações, você pode adicionar uma mensagem padrão
+    if (count === 0) {
+        const li = document.createElement('li');
+        li.textContent = 'Todas as metas foram cumpridas!';
+        notificationList.appendChild(li);
+    }
+}
+
+// Função para mostrar/ocultar as notificações
+function viewNotif() {
+    const notificationsSection = document.getElementById('notifications');
+    notificationsSection.style.display = notificationsSection.style.display === 'none' ? 'flex' : 'none';
+}
+
