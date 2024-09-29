@@ -1,5 +1,3 @@
-// script-avaliacao.js
-
 // Verifica se o usuário está logado
 const isLoggedIn = localStorage.getItem('isLoggedIn');
 if (!isLoggedIn || isLoggedIn !== 'true') {
@@ -8,18 +6,19 @@ if (!isLoggedIn || isLoggedIn !== 'true') {
 
 document.addEventListener('DOMContentLoaded', function() {
     const ratings = document.querySelectorAll('.rating');
-    
+
     ratings.forEach(rating => {
         const stars = rating.querySelectorAll('.fa-star');
-        
+
         stars.forEach(star => {
             star.addEventListener('click', function() {
                 const value = this.getAttribute('data-value');
                 const input = rating.querySelector('input');
                 input.value = value;
-                
+
+                // Marcar estrelas até a estrela clicada
                 stars.forEach(s => {
-                    if (s.getAttribute('data-value') <= value) {
+                    if (parseInt(s.getAttribute('data-value')) <= parseInt(value)) {
                         s.classList.add('selected');
                     } else {
                         s.classList.remove('selected');
@@ -31,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             star.addEventListener('mouseover', function() {
                 const value = this.getAttribute('data-value');
                 stars.forEach(s => {
-                    if (s.getAttribute('data-value') <= value) {
+                    if (parseInt(s.getAttribute('data-value')) <= parseInt(value)) {
                         s.classList.add('hover');
                     } else {
                         s.classList.remove('hover');
@@ -46,13 +45,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-    
+
     document.getElementById('selfAssessmentForm').addEventListener('submit', function(event) {
         event.preventDefault();
-        
+
         let formData = {};
         const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-        
+
         questions.forEach(q => {
             const rating = document.querySelector(`input[name="${q}"]`);
             formData[q] = rating ? parseInt(rating.value) : 0;
@@ -64,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let assessments = JSON.parse(localStorage.getItem('assessments')) || [];
         assessments.push(formData);
         localStorage.setItem('assessments', JSON.stringify(assessments));
-        
+
         downloadJSON(formData, 'autoavaliacao.json');
-        
+
         alert('Autoavaliação enviada com sucesso!');
         this.reset();
 
@@ -79,47 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const input = rating.querySelector('input');
             input.value = 0;
         });
+
+        loadReports();
     });
 
-    // Carregar relatórios (se houver um elemento com id 'reportList')
-    if (document.getElementById('reportList')) {
-        const reportList = document.getElementById('reportList');
-        let assessments = JSON.parse(localStorage.getItem('assessments')) || [];
-        
-        assessments.forEach((assessment, index) => {
-            const report = document.createElement('div');
-            report.className = 'report';
-            
-            const title = document.createElement('h3');
-            title.textContent = `Relatório ${index + 1}`;
-            report.appendChild(title);
-            
-            const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
-            const questionsText = [
-                "Desempenho geral",
-                "Capacidade de trabalhar em equipe",
-                "Habilidade de comunicação",
-                "Capacidade de cumprir prazos",
-                "Proatividade"
-            ];
-            
-            questions.forEach((q, i) => {
-                const paragraph = document.createElement('p');
-                paragraph.innerHTML = `<strong>${questionsText[i]}:</strong> <span class="star-rating">${'★'.repeat(assessment[q])}${'☆'.repeat(5 - assessment[q])}</span>`;
-                report.appendChild(paragraph);
-            }
-
-            );
-
-            // Adiciona a data da avaliação
-            const dateParagraph = document.createElement('p');
-            const date = new Date(assessment.date);
-            dateParagraph.innerHTML = `<em>Data da Avaliação:</em> ${date.toLocaleString()}`;
-            report.appendChild(dateParagraph);
-            
-            reportList.appendChild(report);
-        });
-    }
+    loadReports(); // Chama a função para carregar relatórios quando a página é carregada
 });
 
 function downloadJSON(data, filename) {
@@ -134,4 +97,47 @@ function downloadJSON(data, filename) {
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
     }, 0);
+}
+
+function loadReports() {
+    const reportList = document.getElementById('reportList');
+    reportList.innerHTML = ''; // Limpa relatórios existentes
+    let assessments = JSON.parse(localStorage.getItem('assessments')) || [];
+
+    assessments.forEach((assessment, index) => {
+        const report = document.createElement('div');
+        report.className = 'report';
+
+        const title = document.createElement('h3');
+        title.textContent = `Relatório ${index + 1}`;
+        report.appendChild(title);
+
+        const questions = ['q1', 'q2', 'q3', 'q4', 'q5'];
+        const questionsText = [
+            "Desempenho geral",
+            "Capacidade de trabalhar em equipe",
+            "Habilidade de comunicação",
+            "Capacidade de cumprir prazos",
+            "Proatividade"
+        ];
+
+        questions.forEach((q, i) => {
+            const paragraph = document.createElement('p');
+            paragraph.innerHTML = `<strong>${questionsText[i]}:</strong> <span class="star-rating">${'★'.repeat(assessment[q])}${'☆'.repeat(5 - assessment[q])}</span>`;
+            report.appendChild(paragraph);
+        });
+
+        // Adiciona a data da avaliação
+        const dateParagraph = document.createElement('p');
+        const date = new Date(assessment.date);
+        dateParagraph.innerHTML = `<em>Data da Avaliação:</em> ${date.toLocaleString()}`;
+        report.appendChild(dateParagraph);
+
+        reportList.appendChild(report);
+    });
+}
+
+function logout() {
+    localStorage.setItem('isLoggedIn', 'false');
+    window.location.href = 'login.html';
 }

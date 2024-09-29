@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (user) {
         document.getElementById('username').value = user.username;
-        document.getElementById('email').value = user.email; // Se você tiver um campo de email
+        //document.getElementById('email').value = user.email; // Se você tiver um campo de email
     } else {
         alert('Você não está logado. Redirecionando para a tela de login...');
         window.location.href = 'login.html'; // Redireciona para a tela de login se não houver usuário logado
