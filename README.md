@@ -5,9 +5,9 @@ Enzo Sportellini  - RM 94702
 Enzo Malacrida    - RM 93437
 Diego Alvejan     - RM 95687
 
-#The Stackers - Sistema de Metas e Relatórios
+# The Stackers - Sistema de Metas e Relatórios
 
-#Introdução
+# Introdução
 O The Stackers é uma aplicação web desenvolvida para ajudar indivíduos e equipes na criação, gerenciamento e acompanhamento de metas. Este projeto visa otimizar a gestão de metas, promovendo maior produtividade e eficácia no alcance de objetivos.
 
 #Objetivo do Projeto
